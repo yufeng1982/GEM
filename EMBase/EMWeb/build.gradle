@@ -1,0 +1,5 @@
+dependencies {
+	compile project(':EMCore')
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:1.3.2.RELEASE")
+	providedRuntime("org.apache.tomcat.embed:tomcat-embed-jasper:8.0.30")
+}

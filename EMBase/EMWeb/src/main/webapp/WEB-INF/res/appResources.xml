@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <fn id="SEC">
+    	<resource id="SEC01" key="Routes.Report" category="func"/>
+    	<resource id="SEC02" key="Routes.Summary.Report" category="func"/>
+    </fn>
+</root>

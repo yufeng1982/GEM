@@ -1,0 +1,12 @@
+EMPApplication 必须在基础包下（com.em.boot） 才能扫描所有子包的配置
+data source and jdbctempleate get 》》》 ok
+config messageSource  》》》  ok
+thread loacal intersceptor config 》》》 ok
+base service part config 》》》 ok
+shiro config 》》》 ok
+appResourceManager, functionNodeManager config 》》》 ok
+abscontroller absListcontroller absFormcontroller absMaintenance config 》》》 ok
+user permission config
+
+
+try mogoDB 

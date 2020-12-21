@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+    <module id="SEC" key="Administration" iconCls="ss_shield">
+        <node id="SEC01" name="employee" key="Employees" imgSrc=""  url="/app/fe/hr/employee/list/show" pattern="/app/steel/hr/" leaf="true"></node>
+        <node id="SEC02" name="user" key="User.Management" imgSrc="" url="/app/core/user/list/show" pattern="/app/core/user/" leaf="true"></node>
+        <node id="SEC03" name="role" key="Role.Management" imgSrc="" url="/app/core/role/list/show" pattern="/app/core/role/" leaf="true"></node>
+        <folder id="SEC10" key="System.Control" imgSrc="" index="10200" url="" leaf="false">
+	        <node id="SEC101" name="workFlow" key="Work.Flow" imgSrc="" url="/app/fe/workFlow/form/show" pattern="/app/fe/workFlow/Form/show" leaf="true"></node>
+	        <node id="SEC102" name="cacheLog" key="Cache.Log" imgSrc="" url="/app/fe/cache/form/show" pattern="" leaf="true"></node>
+        </folder>
+    </module>
+</modules>
