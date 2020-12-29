@@ -131,8 +131,8 @@ public abstract class AbsMaintenanceController <T extends AbsCodeNameEntity, P e
 		}
 		
 		if(!paged && !infinite){
-			Sort sort = new Sort(Direction.ASC, "code");
-			sort.and(new Sort(Direction.ASC, "name"));
+			Sort sort = Sort.by(Direction.ASC, "code");
+			sort.and(Sort.by(Direction.ASC, "name"));
 			Iterable<T> list = getEntityService().search(sort, filters);
 			jsonArray = getEntityService().buildStore(list);
 			return toJSONView(jsonArray);

@@ -1,12 +1,40 @@
 EMPApplication 必须在基础包下（com.em.boot） 才能扫描所有子包的配置
+
 data source and jdbctempleate get 》》》 ok
+
 config messageSource  》》》  ok
+
 thread loacal intersceptor config 》》》 ok
+
 base service part config 》》》 ok
-shiro config 》》》 ok
+
+shiro spring boot starter config 》》》 ok
+
+jasypt config  》》》 ok
+
 appResourceManager, functionNodeManager config 》》》 ok
+
 abscontroller absListcontroller absFormcontroller absMaintenance config 》》》 ok
+
+activiti config  》》》 ok
+         
 user permission config
 
+EXTJS 6 (background program management)
+
+JQuery + Bootstrap + HTML5
 
 try mogoDB 
+
+
+
+Gradle eclipse多项目配置
+1.使用gradle eclipse 插件 创建一个多项目的模板工程
+2.新建一个java 项目 修改source 文件夹  src/main/java，src/main/resources and test src
+3.新建一个build.gradle 文件
+4.转换java 项目到gradle 项目
+5.修改root 目录 .projcet 文件
+<matcher>
+	<id>org.eclipse.ui.ide.multiFilter</id>
+	<arguments>1.0-projectRelativePath-equals-true-false-XXXXX(java 项目名称)</arguments>
+</matcher>

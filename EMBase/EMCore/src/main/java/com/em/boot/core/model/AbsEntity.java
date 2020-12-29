@@ -36,7 +36,6 @@ public abstract class AbsEntity implements IEntity, IDelete, Serializable {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(length = 40)
-	@AttributeAccessor("org.hibernate.property.BasicPropertyAccessor")
 	private String id;
 
 	@Column(columnDefinition = "text")

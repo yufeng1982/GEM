@@ -13,8 +13,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.jpa.criteria.CriteriaBuilderImpl;
-import org.hibernate.jpa.criteria.predicate.InPredicate;
 import org.jscience.economics.money.Currency;
 import org.springframework.util.Assert;
 
@@ -113,10 +111,10 @@ public class AppUtils {
 			predicate = builder.notEqual(expression, value);
 			break;
 		case IN:
-			predicate = new InPredicate((CriteriaBuilderImpl)builder, expression, value);
+			predicate = builder.in(expression).in(value);
 			break;
 		case NIN:
-			predicate = new InPredicate((CriteriaBuilderImpl)builder, expression, value).not();
+			predicate = builder.in(expression).in(value).not();
 			break;
 		case NLIKE:
 			predicate = builder.notLike(builder.upper(expression), "%" + value.toString().toUpperCase() + "%");

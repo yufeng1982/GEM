@@ -8,29 +8,40 @@ subprojects {
     }
 
     dependencies {
-        compile("org.springframework.boot:spring-boot-starter-web:1.3.2.RELEASE")
-	    compile("org.springframework.boot:spring-boot-starter-data-jpa:1.3.2.RELEASE")
-	    compile("org.apache.shiro:shiro-spring:1.2.4")
-	    compile("org.apache.shiro:shiro-ehcache:1.2.4")
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.1'
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.1'
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.4.1'
+        compile group: 'org.hibernate', name: 'hibernate-envers', version: '5.4.25.Final'
+	    compile group: 'org.apache.shiro', name: 'shiro-spring-boot-web-starter', version: '1.7.0'
+	    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
+	    compile group: 'com.metaparadigm', name: 'json-rpc', version: '1.0'
+	    compile group: 'com.google.guava', name: 'guava', version: '30.1-jre'
+	    compile group: 'org.jasypt', name: 'jasypt', version: '1.9.3'
+	    compile group: 'org.jasypt', name: 'jasypt-spring31', version: '1.9.3'
+	    compile group: 'org.jasypt', name: 'jasypt-hibernate4', version: '1.9.3'
+	    //compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.7.0'
+	    //compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.7.0'
 	    compile("commons-codec:commons-codec:1.7")
 	    compile("commons-fileupload:commons-fileupload:1.2.2")
-	    compile("org.postgresql:postgresql:9.4.1207.jre7")
-		compile("com.metaparadigm:json-rpc:1.0")
+	   
+		//compile("com.metaparadigm:json-rpc:1.0")
 	    compile("jstl:jstl:1.2")
-	    compile("org.hibernate:hibernate-envers:4.3.11.Final")
 	    compile("commons-lang:commons-lang:2.4")
 	    compile("org.apache.commons:commons-lang3:3.1")
-	    compile("com.google.guava:guava:14.0.1")
+	    //compile("com.google.guava:guava:14.0.1")
 	    compile("joda-time:joda-time:2.2")
 	    compile("org.jscience:jscience:4.3.1")
-	    compile("org.apache.poi:poi-ooxml:3.10.1")
-	    compile("commons-collections:commons-collections:3.2.1")
+	    //compile("org.apache.poi:poi-ooxml:3.10.1")
+	    //compile("commons-collections:commons-collections:3.2.1")
+	    //compile("org.activiti:activiti-spring-boot-starter-basic:5.20.0")
+	    //compile("org.activiti:activiti-bpmn-layout:5.20.0")
+	    //runtime group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.6'
 	    
     }
 
     version = '1.0'
 
     jar {
-        manifest.attributes provider: 'my cool company'
+        manifest.attributes provider: 'gem'
     }
 }

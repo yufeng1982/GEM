@@ -17,18 +17,25 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.hibernate.envers.Audited;
 
 import com.em.boot.core.enums.Language;
 import com.em.boot.core.enums.RoleType;
 import com.em.boot.core.model.AbsEntity;
 import com.em.boot.core.service.security.Corporation;
+import com.em.boot.core.utils.CustomEncryptedStringType;
 
 /**
  * @author FengYu
  *
  */
+
+@TypeDef(name="commonEncryptedString", typeClass=CustomEncryptedStringType.class, parameters= {@Parameter(name="encryptorRegisteredName", value="commonStringEncryptor")})
+
+
 @Entity
 @Table(name = "users", schema = "public")
 @Audited
@@ -44,6 +51,9 @@ public class User extends AbsEntity {
 	private Boolean enabled = Boolean.FALSE;
 	
 	private String email;
+	
+	@Type(type="commonEncryptedString")
+	private String phone;
 	
 	@Enumerated(EnumType.STRING) 
 	private Language language;
@@ -108,6 +118,14 @@ public class User extends AbsEntity {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	@Transient

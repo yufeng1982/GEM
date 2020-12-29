@@ -40,7 +40,6 @@ public class AbsSourceEntity implements Serializable, IEntity, IDelete {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(length = 40)
-	@AttributeAccessor("org.hibernate.property.BasicPropertyAccessor")
 	private String id;
 	
 	private String code;

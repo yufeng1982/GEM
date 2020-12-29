@@ -10,13 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.em.boot.core.dao.UserRepository;
 import com.em.boot.core.model.security.User;
+import com.em.boot.core.utils.Digests;
+import com.em.boot.core.utils.EncodeUtils;
+import com.em.boot.core.utils.Strings;
 
 /**
  * @author FengYu
  *
  */
-@Service
-@Transactional(readOnly = true)
+@Service("userService")
 public class UserService {
 	
 	public static final String HASH_ALGORITHM = "SHA-1";
@@ -48,5 +50,26 @@ public class UserService {
 //	        	}
 //        }
         return result;
+	}
+	
+	@Transactional(readOnly = false)
+	public void saveUserAndEncrypt(User user) {
+		if(!Strings.isEmpty(user.getPassword())) {
+			encryptPassword(user);
+		}
+		userRepository.save(user);
+	}
+	
+	@Transactional(readOnly = false)
+	public void save(User user) {
+		userRepository.save(user);
+	}
+	
+	private void encryptPassword(User user) {
+		byte[] salt = Digests.generateSalt(SALT_SIZE);
+		user.setSalt(EncodeUtils.encodeHex(salt));
+		byte[] hashPassword = Digests.sha1(user.getPassword().getBytes(), salt, HASH_INTERATIONS);
+		user.setPassword(EncodeUtils.encodeHex(hashPassword));
+		
 	}
 }

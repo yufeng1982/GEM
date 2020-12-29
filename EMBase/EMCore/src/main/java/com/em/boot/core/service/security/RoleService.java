@@ -13,7 +13,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.em.boot.core.dao.RoleRepository;
@@ -28,9 +28,9 @@ import com.em.boot.core.vo.RoleQueryInfo;
  * @author YF
  *
  */
-@Component
+@Service("roleService")
 @Transactional(readOnly = true)
-public class RoleService extends AbsCodeNameEntityService<Role, RoleQueryInfo> {
+public class RoleService extends AbsCodeNameEntityService<Role, RoleQueryInfo>  {
 	public static final String ADMIN = "admin";
 	public static final String COMMONROLE = "CommonRole";
 	
@@ -166,7 +166,7 @@ public class RoleService extends AbsCodeNameEntityService<Role, RoleQueryInfo> {
 	}
 	
 	public Role findOne(String id) {
-		return getRepository().findOne(id);
+		return getRepository().findById(id).get();
 	}
 	
 	public List<Role> findByCoporation(String corporation){

@@ -14,7 +14,7 @@ public class UserQueryInfo extends PageInfo<User> {
 	
 	public UserQueryInfo(){
 		super();
-		Sort sort = new Sort(Direction.ASC, "loginName");
+		Sort sort = Sort.by(Direction.ASC, "loginName");
 		setSortObj(sort);
 	}
 

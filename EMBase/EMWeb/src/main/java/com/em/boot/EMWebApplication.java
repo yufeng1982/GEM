@@ -9,7 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.em.boot.web.interceptors.ThreadLocalHandlerInterceptor;
 
@@ -19,7 +19,7 @@ import com.em.boot.web.interceptors.ThreadLocalHandlerInterceptor;
  */
 @Configuration
 @SpringBootApplication(scanBasePackages="com.em.boot.web,com.em.boot.core")
-public class EMWebApplication extends WebMvcConfigurerAdapter {
+public class EMWebApplication implements WebMvcConfigurer {
 	
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(EMWebApplication.class);
@@ -37,6 +37,7 @@ public class EMWebApplication extends WebMvcConfigurerAdapter {
 	public void addInterceptors(InterceptorRegistry registry) {
 	   registry.addInterceptor(getThreadLocalHandlerInterceptor()).addPathPatterns("/app/**");
 	}
+	
 	
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(EMWebApplication.class, args);

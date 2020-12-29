@@ -89,13 +89,13 @@ public class PageInfo<T> implements Pageable {
 		}
 		if(clazz != null) {
 			if(EntityReflectionUtils.getDeclaredField(clazz, "code") != null && EntityReflectionUtils.getDeclaredField(clazz, "name") != null) {
-				setSortObj(new Sort(Direction.ASC, "code").and(new Sort(Direction.ASC, "name")));
+				setSortObj(Sort.by(Direction.ASC, "code").and(Sort.by(Direction.ASC, "name")));
 			} else if(EntityReflectionUtils.getDeclaredField(clazz, "code") != null ) {
-				setSortObj(new Sort(Direction.ASC, "code"));
+				setSortObj(Sort.by(Direction.ASC, "code"));
 			} else if(EntityReflectionUtils.getDeclaredField(clazz, "name") != null) {
-				setSortObj(new Sort(Direction.ASC, "name"));
+				setSortObj(Sort.by(Direction.ASC, "name"));
 			} else if(EntityReflectionUtils.getDeclaredField(clazz, "creationDate") != null ) {
-				setSortObj(new Sort(Direction.DESC, "creationDate"));
+				setSortObj(Sort.by(Direction.DESC, "creationDate"));
 			}
 		}
 	}
@@ -106,7 +106,7 @@ public class PageInfo<T> implements Pageable {
 	
 	public PageInfo(String orderBy, String order) {
 		this();
-		setSortObj(new Sort(Direction.valueOf(order), orderBy));
+		setSortObj(Sort.by(Direction.valueOf(order), orderBy));
 	}
 	
 	public PageInfo(final int pageSize, final int beginIndex, final boolean autoCount) {
@@ -287,7 +287,7 @@ public class PageInfo<T> implements Pageable {
 	}
 
 	@Override
-	public int getOffset() {
+	public long getOffset() {
 		return (page - 1) * pageSize;
 	}
 

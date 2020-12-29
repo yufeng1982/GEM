@@ -152,18 +152,18 @@ public class SourceEntityService extends AbsService<AbsSourceEntity, SourceEntit
 	}
 
 	public CrmSourceEntity getCrmSourceEntity(String id) {
-		return crmSourceEntityRepository.findOne(id);
+		return crmSourceEntityRepository.findById(id).get();
 	}
 
 	public DocumentLineSourceEntity getDocumentLineSourceEntity(String id) {
-		return documentLineSourceEntityRepository.findOne(id);
+		return documentLineSourceEntityRepository.findById(id).get();
 	}
 
 	public DocumentSourceEntity getDocumentSourceEntity(String id) {
-		return documentSourceEntityRepository.findOne(id);
+		return documentSourceEntityRepository.findById(id).get();
 	}
 
 	public ProductSourceEntity getProductSourceEntity(String id) {
-		return productSourceEntityRepository.findOne(id);
+		return productSourceEntityRepository.findById(id).get();
 	}
 }

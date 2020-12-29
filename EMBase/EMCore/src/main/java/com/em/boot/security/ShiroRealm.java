@@ -11,6 +11,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.em.boot.core.model.security.User;
 import com.em.boot.core.service.security.UserService;
@@ -19,7 +20,7 @@ import com.em.boot.core.utils.EncodeUtils;
 
 public class ShiroRealm extends AuthorizingRealm {
 
-	private UserService userService;
+	@Autowired private UserService userService;
 
 	public ShiroRealm() {
 		super();	
@@ -39,6 +40,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	          return null;
 	     } else {
 	          SimpleAuthorizationInfo result = userService.getUerPermissions();
+	          result.addRole("admin");
 	          return result;
 	     }
 	}
@@ -52,12 +54,5 @@ public class ShiroRealm extends AuthorizingRealm {
 	         return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), ByteSource.Util.bytes(salt), getName());
 	     }
 	     return null;
-	}
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
 	}
 }
