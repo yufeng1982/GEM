@@ -50,7 +50,7 @@ public abstract class AbsCodeNameEntity extends AbsCodeEntity implements IMainte
 	@Override
 	public JSONObject toJSONObject() {
     	JSONObject jo = super.toJSONObject();
-    	jo.put("name", FormatUtils.toString(name));
+    	jo.put("name", FormatUtils.stringValue(name));
     	return jo;
     }
 

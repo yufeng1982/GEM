@@ -354,7 +354,7 @@ public class PageInfo<T> implements Pageable {
 			jo.put("sf_EQ_id", this.getSf_EQ_id());
 			jo.put("sf_LIKE_query", this.getSf_LIKE_query());
 			jo.put("sf_EQ_corporation", FormatUtils.idString(getSf_EQ_corporation()));
-			jo.put("sf_EQ_corporationText", FormatUtils.toString(getSf_EQ_corporation()));
+			jo.put("sf_EQ_corporationText", FormatUtils.stringValue(getSf_EQ_corporation()));
 		}
 		return jo;
 	}

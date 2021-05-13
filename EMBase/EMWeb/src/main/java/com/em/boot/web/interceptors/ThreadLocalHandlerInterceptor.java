@@ -75,6 +75,18 @@ public class ThreadLocalHandlerInterceptor implements HandlerInterceptor {
         }
 //
         HttpSession session = request.getSession();
+        
+     // color setup
+        String sessionColor = (String) session.getAttribute("color");
+        if (Strings.isEmpty(sessionColor)) {
+        	session.setAttribute("color", "blue");
+        } else {
+        	 String requesColor = request.getParameter("color");
+        	 if (!Strings.isEmpty(requesColor) && !sessionColor.equals(requesColor)) {
+        		 session.setAttribute("color", requesColor);
+        	 }
+        }
+        
         Subject subject = SecurityUtils.getSubject();
         User currentUser = userService.findByLoginName((String) subject.getPrincipal());
         

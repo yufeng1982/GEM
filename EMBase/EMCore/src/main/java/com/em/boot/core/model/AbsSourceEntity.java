@@ -178,14 +178,14 @@ public class AbsSourceEntity implements Serializable, IEntity, IDelete {
 	@Override
 	public JSONObject toJSONObject() {
 		JSONObject jo = new JSONObject();
-		jo.put("id", FormatUtils.toString(id));
-		jo.put("sourceEntityId", FormatUtils.toString(id)); //hack for the searching select search use
-		jo.put("ownerId", FormatUtils.toString(ownerId));
-		jo.put("ownerType", FormatUtils.toString(ownerType));
-		jo.put("code", FormatUtils.toString(code));
-		jo.put("name", FormatUtils.toString(name));
-		jo.put("status", FormatUtils.toString(status));
-		jo.put("description", FormatUtils.toString(description));
+		jo.put("id", FormatUtils.stringValue(id));
+		jo.put("sourceEntityId", FormatUtils.stringValue(id)); //hack for the searching select search use
+		jo.put("ownerId", FormatUtils.stringValue(ownerId));
+		jo.put("ownerType", FormatUtils.stringValue(ownerType));
+		jo.put("code", FormatUtils.stringValue(code));
+		jo.put("name", FormatUtils.stringValue(name));
+		jo.put("status", FormatUtils.stringValue(status));
+		jo.put("description", FormatUtils.stringValue(description));
 		return jo;
 	}
 	

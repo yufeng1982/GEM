@@ -1,0 +1,18 @@
+<div class="properties">
+
+
+		<t:common type="text" id="userName" path="userName" notNull="false" key="EventLog.UserName"/>
+
+		<t:common type="text" id="sessionId" path="sessionId" notNull="false" key="EventLog.SessionId"/>
+
+		<t:common type="text" id="url" path="url" notNull="false" key="EventLog.Url"/>
+
+		<t:common type="text" id="requestDate" path="requestDate" notNull="false" key="EventLog.RequestDate"/>
+
+		<t:common type="text" id="remoteAddr" path="remoteAddr" notNull="false" key="EventLog.RemoteAddr"/>
+
+		<t:common type="text" id="consumption" path="consumption" notNull="false" key="EventLog.Consumption"/>
+
+		<t:common type="text" id="params" path="params" notNull="false" key="EventLog.Params"/>
+
+</div>

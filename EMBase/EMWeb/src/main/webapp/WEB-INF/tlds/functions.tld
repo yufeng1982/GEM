@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<tlib-version>1.0</tlib-version>
+	<short-name>f</short-name>
+	<uri>functions</uri>
+
+	<function>
+		<name>htmlEscape</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>String filterSpecialChar(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>htmlEditorEscape</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>String filterSpecialChar4HtmlEditor(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>getText</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>String getConvertedText(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>getOText</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>String getText(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>getFileName</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>String getFileName(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>getAppSetting</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>String getAppSetting(java.lang.String)</function-signature>
+	</function>
+  <function>
+    <name>getComboData</name>
+    <function-class>com.em.boot.core.utils.JsonUtils</function-class>
+    <function-signature>
+        com.em.boot.core.utils.JsonUtils getEnmuDataByClazz(java.lang.String,java.lang.String)
+    </function-signature>
+  </function>
+  <function>
+    <name>getSEType</name>
+    <function-class>com.em.boot.core.enums.SourceEntityType</function-class>
+    <function-signature>
+        com.em.boot.core.enums.SourceEntityType fromName(java.lang.String)
+    </function-signature>
+  </function>  
+  <function>
+    <name>getMType</name>
+    <function-class>com.em.boot.core.enums.MaintenanceType</function-class>
+    <function-signature>
+       com.em.boot.core.enums.MaintenanceType fromName(java.lang.String)
+    </function-signature>
+  </function> 
+  <function>
+    <name>getShowedColumns</name>
+    <function-class>com.em.boot.core.enums.MaintenanceType</function-class>
+    <function-signature>
+        String getShowedColumns(java.lang.String)
+    </function-signature>
+  </function>
+  <function>
+    <name>getColumModel</name>
+    <function-class>com.em.boot.core.enums.MaintenanceType</function-class>
+    <function-signature>
+        org.json.JSONArray getColumModel(java.lang.String)
+    </function-signature>
+  </function>
+  <function>
+    <name>dateTimeValue</name>
+    <function-class>com.em.boot.core.utils.FormatUtils</function-class>
+    <function-signature>
+        String dateTimeValue(java.util.Date)
+    </function-signature>
+  </function>
+  
+  <function>
+    <name>sess</name>
+    <function-class>com.em.boot.core.utils.XTypeUtils</function-class>
+    <function-signature>
+        org.json.JSONObject sess(java.lang.String)
+    </function-signature>
+  </function>
+  
+  <function>
+    <name>mss</name>
+    <function-class>com.em.boot.core.utils.XTypeUtils</function-class>
+    <function-signature>
+        org.json.JSONObject mss(java.lang.String)
+    </function-signature>
+  </function>
+	<function>
+		<name>capitalize</name>
+		<function-class>com.em.boot.core.utils.FormatUtils</function-class>
+		<function-signature>String capitalize(java.lang.String)</function-signature>
+	</function>
+  	<function>
+		<name>isPermitted</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>boolean isPermitted(java.lang.String)</function-signature>
+	</function>
+  	<function>
+		<name>isVisible</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>boolean isVisible(java.lang.String, java.lang.String)</function-signature>
+	</function>
+  	<function>
+		<name>isEnable</name>
+		<function-class>com.em.boot.core.utils.ResourceUtils</function-class>
+		<function-signature>boolean isEnable(java.lang.String, java.lang.String)</function-signature>
+	</function>
+</taglib>

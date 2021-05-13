@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <fn id="ART01">
+     	<resource id="newBtn" key="Com.New1" category="button" />
+    </fn>
+    
+</root>

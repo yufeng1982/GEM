@@ -47,7 +47,7 @@ public abstract class AbsController<T> {
 	private String cName = ClassUtils.getShortName(getClass());
 	
 	@Autowired protected SourceEntityService sourceEntityService;
-	@Autowired protected FunctionNodeService functionNodeManager;
+	@Autowired protected FunctionNodeService functionNodeService;
 	@Autowired protected AppResourceService appResourceService;
 	
 	protected final static String APP_NAME = "APP_NAME";

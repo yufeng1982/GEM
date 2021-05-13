@@ -45,7 +45,7 @@ public abstract class AbsService<T extends IEntity, P extends PageInfo<T>> {
 	public abstract boolean isCommonAccess();
 
 	public T get(String id) {
-		return getRepository().findById(id).get();
+		return getRepository().findById(id).orElse(null);
 	}
 
 	public T save(T entity) {
@@ -72,7 +72,7 @@ public abstract class AbsService<T extends IEntity, P extends PageInfo<T>> {
 	}
 
 	public T findOne(PropertyFilter... filters) {
-		return getRepository().findOne(this.bySearchFilter(filters)).get();
+		return getRepository().findOne(this.bySearchFilter(filters)).orElse(null);
 	}
 
 //	TODO public abstract void flushAndClearSession();

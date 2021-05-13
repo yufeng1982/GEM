@@ -32,10 +32,9 @@ import com.em.boot.core.utils.ThreadLocalUtils;
  * @author YF
  *
  */
-@Service("functionNodeManager")
+@Service("functionNodeService")
 public class FunctionNodeService {
-	public final static String AUIDT_FUNTION_NODE = "auditFuntionNode";
-
+	
 	@Autowired private ERPServletContext erpServletContext;
 	
 	private List<FunctionNodeType> allModules = new ArrayList<FunctionNodeType>();
@@ -43,17 +42,15 @@ public class FunctionNodeService {
 	private Map<String, FunctionNode> allFolderFunctionNodes = new HashMap<String, FunctionNode>();
 	private Map<String, FunctionNode> allStandAloneFunctionNodes = new HashMap<String, FunctionNode>();
 	
-	private FunctionNode auditFuntionNode;
 	private void buildFunctionNodes(FunctionNodeType fnType, FunctionNode pFn, Element nodeElement) {
 		FunctionNode node = convertToFunctionNode(nodeElement, fnType);
 		
 		if(pFn != null) {
 			pFn.addFunctionNode(node);
-			node.setParent(pFn);
 		} else {
 			fnType.addFunctionNode(node);
 		}
-		 
+		
 		String name = nodeElement.getName();
 		if(name.equals("folder")) {
 			allFolderFunctionNodes.put(node.getId(), node);
@@ -106,73 +103,19 @@ public class FunctionNodeService {
 		return null;
 	}
 	public List<FunctionNodeType> findValidFunctionNodeTypesForCurrentUser() {
-		Map<FunctionNodeType, List<FunctionNode>> typeNodes = new HashMap<FunctionNodeType, List<FunctionNode>>();
+		init();
 		List<FunctionNodeType> functionTypeList = new ArrayList<FunctionNodeType>();
-		if(ThreadLocalUtils.getCurrentUser().isSuperAdmin()) {
-			List<FunctionNodeType> AdminFunctionTypeList = new ArrayList<FunctionNodeType>();
-			for (FunctionNodeType eachType : findAllFunctionNodeTypes()) {
-				if(eachType.getId().equals("SEC")) {
-					List<FunctionNode> list = new ArrayList<FunctionNode>();
-					for(FunctionNode node : eachType.getList()) {
-						if(node.getId().equals("SEC01") || node.getId().equals("SEC02") || node.getId().equals("SEC03") 
-								|| node.getId().equals("SEC09") || node.getId().equals("SEC10")) list.add(node);
-					}
-					eachType.setList3(list);
-					AdminFunctionTypeList.add(eachType);
-				}
-				eachType.setList2(eachType.getList());
+		String userFunctionNodeIds = getValidFunctionNodeIdsFromUser(ThreadLocalUtils.getCurrentUser());
+		for (FunctionNodeType eachType : findAllFunctionNodeTypes()) {
+			String typeId = eachType.getId();
+			if(isValidFunctionNodeType(userFunctionNodeIds, typeId)) {
 				functionTypeList.add(eachType);
 			}
-			Collection<FunctionNode> folders = allFolderFunctionNodes.values();
-			for(FunctionNode folder : folders) {
-				folder.setList2(folder.getList());
-			}
-			return AdminFunctionTypeList;
-		} else {
-			functionTypeList.add(getBookMark());
-			String userFunctionNodeIds = getValidFunctionNodeIdsFromUser(ThreadLocalUtils.getCurrentUser());
-			List<FunctionNode> nodes = getFunctionNodes(userFunctionNodeIds.split(","));
-			for (FunctionNode o : nodes) {
-				if(o != null && isValidFunctionNodeType(userFunctionNodeIds, o.getId())) {
-					FunctionNodeType t = o.getFunctionNodeType();
-					List<FunctionNode> ns = typeNodes.get(t);
-					if(ns == null) {
-						ns = new ArrayList<FunctionNode>();
-						typeNodes.put(t, ns);
-					}
-					if(o.getParent() == null) {
-						ns.add(o);
-					} else {
-						FunctionNode parent = o.getParent();
-						if(!ns.contains(parent)) {
-							ns.add(parent);
-						}
-						if(!parent.getList2().contains(o)) {
-							parent.addFunctionNode2(o);
-						}
-					}
-					
-//					typeNodes.get(t);
-					if(!functionTypeList.contains(t)) {
-						functionTypeList.add(t);
-					}
-				}
-			}
-			for (FunctionNodeType type : functionTypeList) {
-				type.setList2(typeNodes.get(type));
-			}
+			
 		}
 		return functionTypeList;
 	}
 
-	public FunctionNodeType getBookMark() {
-		for (FunctionNodeType t : allModules) {
-			if("0".equals(t.getId())) {
-				return t;
-			}
-		}
-		return null;
-	}
 	public List<FunctionNode> findValidFunctionNodesForCurrentUser() {
 		List<FunctionNode> functionNodeList = new ArrayList<FunctionNode>();
 		String userFunctionNodeIds = getValidFunctionNodeIdsFromUser(ThreadLocalUtils.getCurrentUser());
@@ -199,14 +142,7 @@ public class FunctionNodeService {
 				if(fn == null) {
 					fn = allStandAloneFunctionNodes.get(id);
 				}
-				if(fn == null) return fnList;
-				if(!fnList.contains(fn)) {
-					fn.setList2(null);
-					if(fn.getParent() != null && !fn.getParent().getList2().isEmpty()) {
-						fn.getParent().setList2(null);
-					}
-					fnList.add(fn);
-				}
+				fnList.add(fn);
 			}
 		}
 		return fnList;
@@ -231,7 +167,7 @@ public class FunctionNodeService {
 		Iterator<Role> roles = user.getAvailableRoles(corporation).iterator();
 		while (roles.hasNext()) {
 			Role role = roles.next();
-			if(!Strings.isEmpty(role.getFunctionNodeIds())) fnIds.append(role.getFunctionNodeIds());
+			fnIds.append(role.getFunctionNodeIds());
 		}
 		return fnIds.toString();
 	}
@@ -246,12 +182,11 @@ public class FunctionNodeService {
 		
 		SAXReader reader = new SAXReader();
 		try {
-			String fnFilePath = Strings.append(new StringBuffer(), erpServletContext.getRealPath(), File.separator, "WEB-INF", File.separator, "res", File.separator, "functionNodes.xml").toString();
+			String fnFilePath = Strings.append(new StringBuffer(), erpServletContext.getRealPath(), File.separator, "WEB-INF", File.separator, "res", File.separator, "functionNodes-core.xml").toString();
 			Document functionNodeDocument = reader.read(new File(fnFilePath));
 			
 			Element root = functionNodeDocument.getRootElement();
 			Iterator elementIterator = root.elementIterator();
-			auditFuntionNode = new FunctionNode(AUIDT_FUNTION_NODE);
 			while (elementIterator.hasNext()) {
 				Element moduleElement = (Element) elementIterator.next();
 				if(moduleElement.getName().equals("standAloneModule")) {
@@ -283,19 +218,23 @@ public class FunctionNodeService {
 		if(ThreadLocalUtils.getCurrentUser().getUsername().equals("admin")) return true;
 		// TODO, HACK ignore for book mark
 		if(id.equals("0")) return true;
-		return functionNodeIds.indexOf(id) != -1;
+		
+		Corporation corporation = ThreadLocalUtils.getCurrentCorporation();
+		String corporationNodes = corporation != null ? corporation.getFunctionNodes():functionNodeIds;
+		
+		return functionNodeIds.indexOf(id) != -1 && corporationNodes.indexOf(id) != -1;
 	}
 	
 	public List<FunctionNodeType> buildFunctionNodesByNodeIds(String functionNodeIds){
 		List<FunctionNodeType> list = new ArrayList<>();
 		for(FunctionNodeType fnt : allModules){
-			List<FunctionNode> functionNodes = fnt.getList2();
+			List<FunctionNode> functionNodes = fnt.getList();
 			List<FunctionNode> nodeVerified = new ArrayList<>();
 			for(FunctionNode fn : functionNodes){
 				appendCheckedFunctionNode(fn, functionNodeIds,nodeVerified);
 			}
 			if(!nodeVerified.isEmpty()){
-				fnt.setList2(nodeVerified);
+				fnt.setList(nodeVerified);
 				list.add(fnt);
 			}
 		}
@@ -310,19 +249,15 @@ public class FunctionNodeService {
 				nodeVerified.add(fn);
 			}
 		}else{
-			List<FunctionNode> functionNodes = fn.getList2();
+			List<FunctionNode> functionNodes = fn.getList();
 			List<FunctionNode> subNodeVerified = new ArrayList<>();
 			for(FunctionNode fnn : functionNodes){
 				appendCheckedFunctionNode(fnn, functionNodeIds,subNodeVerified);
 			}
 			if(!subNodeVerified.isEmpty()){
-				fn.setList2(subNodeVerified);
+				fn.setList(subNodeVerified);
 				nodeVerified.add(fn);
 			}
 		}
-	}
-	
-	public FunctionNode getAuditFunctionNode() {
-	    return this.auditFuntionNode;
 	}
 }

@@ -16,9 +16,9 @@ public enum Language implements IEnum {
 	French {
 		public Locale getLocale() { return Locale.CANADA_FRENCH; } 
 	},
-//	Chinese {
-//		public Locale getLocale() { return Locale.CHINESE; }
-//	},
+	Chinese {
+		public Locale getLocale() { return Locale.CHINESE; }
+	},
 	Spanish {
 		public Locale getLocale() { return new Locale("es", "", ""); }
 	};
@@ -41,8 +41,8 @@ public enum Language implements IEnum {
 			language = "";
 		if (language.toLowerCase().startsWith("fr_CA") || language.toLowerCase().startsWith("fr")) {
 			return Locale.CANADA_FRENCH;
-//		} else if (language.toLowerCase().startsWith("ch")) {
-//			return Locale.CHINESE;
+		} else if (language.toLowerCase().startsWith("ch")) {
+			return Locale.CHINESE;
 		}  else if (language.toLowerCase().startsWith("es")) {
 			return Spanish.getLocale();
 		} else {
@@ -58,7 +58,7 @@ public enum Language implements IEnum {
 	}
 	public static Language fromCode(String code) {
 		if(code.equals("en")) return Language.English;
-//		if(code.equals("zh")) return Language.Chinese;
+		if(code.equals("zh")) return Language.Chinese;
 		if(code.equals("fr")) return Language.French;
 		if(code.equals("es")) return Language.Spanish;
 		return Language.English;

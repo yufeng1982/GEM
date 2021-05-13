@@ -101,13 +101,13 @@ public class SystemLog extends AbsEntity {
 	
     public JSONObject toJSONObject() {
     	JSONObject jsonObject = super.toJSONObject();
-    	jsonObject.put("type", FormatUtils.toString(type));
+    	jsonObject.put("type", FormatUtils.stringValue(type));
     	jsonObject.put("logDate", logDate == null ? "" : FormatUtils.formatDate(logDate));
-    	jsonObject.put("referId", FormatUtils.toString(getReferId()));
-    	jsonObject.put("referType", FormatUtils.toString(getReferType()));
+    	jsonObject.put("referId", FormatUtils.stringValue(getReferId()));
+    	jsonObject.put("referType", FormatUtils.stringValue(getReferType()));
     	jsonObject.put("referName", "");
     	jsonObject.put("referCode", "");
-    	jsonObject.put("modifiedBy", FormatUtils.toString(getModifiedBy()));
+    	jsonObject.put("modifiedBy", FormatUtils.stringValue(getModifiedBy()));
 
     	return jsonObject;
     }

@@ -1,0 +1,614 @@
+html{overflow:hidden;margin:0;padding:0;}
+body{overflow:hidden;}
+html{overflow:hidden;}
+body{overflow:hidden;}
+input[type=checkbox]:focus + label {
+  background-color: #7FFF00; 
+  color: #000; 
+}
+#divWinHeader
+{
+	padding:11px 5px 5px 15px;
+	text-align:left;
+	background-color:#AAAAAA;
+	color:White;
+	font-weight:bold;
+	background-image:url(/images/bkg_header.gif);
+	background-repeat:repeat-x;
+	line-height:28px;
+	border-bottom:3px double #a7bacd;
+	height:auto;
+}
+
+#divWinContent
+{
+	padding:5px;
+	overflow:auto;
+/*	filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#00000000,endColorStr=#80dddddd); */ 
+}
+
+#divWinFooter
+{
+
+	
+	text-align:right;
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-right: 10px;
+	padding-left: 10px; 
+	border: 2px outset #eeeeee;
+	background-color:#AAAAAA;
+/*	height:38px;*/
+	font-size:1.0em;
+	filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#FFFFFFFF,endColorStr=#00888888); 
+	position:absolute;
+	left:0px;
+}
+.x-searchingFieldToolbar{
+	background-color:#FFFFCC !important;
+    background-image: none !important;
+}
+
+.textFieldFocusClass {background-color: #99FF99 !important; background-image: none !important;}
+
+BODY
+{
+	margin:0;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.85em;
+
+	font-size:13px;
+	line-height:0.95em;
+	padding:0;
+}
+
+INPUT {font-size:13px;}
+BUTTON {font-size:13px;}
+SELECT {font-size:13px;}
+
+
+TABLE
+{
+	font-size:1em;
+}
+
+TD
+{
+	font-size:1em;
+}
+
+LEGEND
+{
+	text-transform:capitalize;
+}
+
+A
+{
+	color:#0000CC;
+}
+
+A:link
+{
+	color:#0000CC;
+}
+
+A:visited
+{
+	color:#0000CC;
+}
+
+A:hover
+{
+	color:#0066FF;
+}
+
+A:active
+{
+	color:#0066FF;
+}
+
+/** general css class , for forms purpose **/
+.requiredField
+{
+	border:1px solid #3399CC;
+	background-color:#D2F4FF;
+}
+
+.requiredFieldLabel
+{
+	font-weight:bold;
+	font-size:0.95em;
+}
+
+.panelFieldLabel
+{
+	width:150px;
+	font-weight:normal;
+}
+/* .normalField{}
+   .normalFieldLabel{} 
+   .errorFieldLabel{}
+*/
+.disabledField
+{
+	background-color:#dddddd;
+	color:#999999;
+}
+
+.errorField
+{
+	border:1px solid #ffaaaa;
+}
+
+.disabledFieldLabel
+{
+	border:1px solid #999999;
+	background-color:#dddddd;
+}
+
+/* error info panel */
+#divErrorInfoPanel
+{
+	background:url(/images/pnl_err_topleft.gif) top left no-repeat;
+	width:280px;
+	position:absolute;
+	top:100px;
+	left:10px;
+	z-index:100;
+}
+
+#divErrorInfoPanel h3
+{
+	background:url(/images/pnl_err_topright.gif) top right no-repeat;
+	font-size:1.1em;
+	padding:12px;
+	margin:0;
+}
+
+#divErrorInfoPanel h3 a
+{
+	background:url(/images/btn_close.gif) top left no-repeat;
+	float:right;
+	height:21px;
+	width:21px;
+	text-decoration:none;
+	margin-right:10px;
+	margin-top:-25px;
+	z-index:105;
+}
+
+#divErrorInfoPanel h3 a:hover
+{
+	background-position:0 -21px;
+	text-decoration:none;
+}
+
+#divErrorInfoPanel .errPanelBody
+{
+	background:url(/images/pnl_err_rightb.gif) top right repeat-y;
+	margin:0;
+	margin-top:-2em;
+	padding-top:1em;
+	
+}
+#divErrorInfoPanel .errPanelBody ul {
+margin:10px;}
+#divErrorInfoPanel .panelFooter
+{
+	background:url(/images/pnl_err_bottomleft.gif) bottom left no-repeat;
+}
+
+#divErrorInfoPanel .panelFooter p
+{
+	background:url(/images/pnl_err_bottomright.gif) bottom right no-repeat;
+	padding:15px;
+	display:block;
+	margin:-2em 0 0;
+}
+
+.txtSmallNumeric
+{
+	width:60px;
+}
+
+#errorPage
+{
+	width:100%;
+	position:absolute;
+	left:0;
+	text-align:right;
+	background-color:#CCCCCC;
+}
+
+#divLogoStrip
+{
+	width:100%;
+	background-color:#FFFFFF;
+	border-top:5px solid #004584;
+}
+
+#divLogoFill
+{
+	float:right;
+	width:300px;
+	display:inline;
+	background:url(/images/separator_logo_strip.gif) no-repeat top left;
+	background-color:#004584;
+	height:63px;
+}
+
+.links
+{
+	text-decoration:none;
+	color:#6633FF;
+}
+
+.iFrames
+{
+	font-size:0.3em;
+	font-family:helvetica;
+}
+
+/********************************/
+.browseBtnPopup
+{
+	
+	width:22px ;
+	height:22px ;
+	margin-left:-18px;
+}
+.browseBtnPopupEmpty
+{
+	margin-left:-4px;
+	width:20px ;
+	height:23px ;
+	margin-right:0px;
+}
+
+
+.browseField
+{
+	
+	white-space:nowrap;
+}
+
+.browseField .field
+{
+	width:180px;
+}
+
+.fieldRow
+{
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:2px;
+	height:22px; /* for Extjs4 */
+}
+/* strict mode ready */
+.fieldRow LABEL {
+/*	margin-top:1px;
+	padding-top:2px;*/
+	clear: both;
+	float: left;
+	display: block;
+	line-height:1.2em
+}
+/* override ext4's css */
+.x-form-item{
+	margin-bottom:0px !important;
+}
+.fieldRowLABEL
+{
+	margin-top:1px;
+	padding-top:2px;
+	clear:both;
+	float:left;
+	display:block;
+	line-height:1.2em;
+}
+.fieldRowTextField
+{
+	line-height : 1.5em;
+	width:120px;
+	height:22px;
+	background: url("/js/extjs41/resources/themes/images/default/form/text-bg.gif") repeat-x scroll 0 0 white;
+    border: 1px solid #B5B8C8;
+/*    padding: 1px 3px;*/
+}
+/*******************************
+ something for the outlook style panel bar header */
+.pnlPaneHeader
+{
+	overflow:hidden;
+	white-space:nowrap;
+	background-image:url(/images/pnlPaneHeader_bg.gif);
+	color:#FFFFFF;
+	font-size:1.1em;
+	font-weight:bold;
+	width:100%;
+	height:24px;
+	padding:2px;
+}
+
+.pnlSubPaneHeader
+{
+	overflow:hidden;
+	white-space:nowrap;
+	background-image:url(/images/pnlSubPaneHeader_bg.gif);
+	border-top:1px solid #9EBEF5;
+	border-bottom:1px solid #002D96;
+	font-size:0.8em;
+	width:100%;
+	height:17px;
+	padding:1px;
+}
+
+.pnlPane
+{
+	border:1px solid #002D96;
+	background-color:#FFFFFF;
+}
+.LineFSSamll {
+	margin-top:2px;
+	border-left:0;
+	border-right:none;
+	border-bottom:none;
+	padding-left:8px;
+}
+
+.LineFSSamll LEGEND
+{
+	margin-left:-11px;
+	margin-top:-1px;
+	line-height:1em;
+	text-transform:capitalize;
+}
+.LinefieldSet
+{
+	margin-top:10px;
+	border-left:0;
+	border-right:none;
+	border-bottom:none;
+	padding-left:20px;
+}
+
+.LinefieldSet LEGEND
+{
+	margin-left:-27px;
+	margin-top:-1px;
+	line-height:22px;
+	text-transform:capitalize;
+}
+ 
+.LinefieldSetLEGEND
+{
+	margin-left:-27px;
+	margin-top:-1px;
+	text-transform:capitalize;
+}
+
+.button2 {width:auto;overflow:visible;padding-right:3px;padding-left:2px;padding-top:0;height:24px}
+
+
+.extGrid_checkbox {margin-top:-1px;margin-bottom:-3px;width:18px;height:18px;}
+.componentTextField{
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:1px;
+	width:90px;
+}
+.combineDateField {
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:1px;
+	width:80px;
+}
+.userNameTextField{
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:1px;
+	width:50px;
+}
+.combinMinField{
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:1px;
+	width:60px;
+}
+.combinMaxField{
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:1px;
+	width:60px;
+}
+.combinInField{
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:1px;
+	width:45px;
+}
+.combinOutField{
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:1px;
+	width:45px;
+}
+.combinOnField{
+	padding:1px;
+	margin-top:2px;
+	margin-bottom:1px;
+	width:45px;
+}
+.exchangeRateField{
+	line-height : 1.5em;
+	width:133px;
+	height:22px;
+	background: url("/js/extjs41/resources/themes/images/default/form/text-bg.gif") repeat-x scroll 0 0 white;
+    border: 1px solid #B5B8C8;
+}
+
+.divWinHeader {
+	padding: 11px 5px 5px 15px;
+	text-align: left;
+	background-color: #191970;
+	color: White;
+	font-weight: bold;
+	background-image: url(/images/bkg_header.gif);
+	background-repeat: repeat-x;
+	line-height: 28px;
+	border-bottom: 3px double #a7bacd;
+	height: 28px;
+}
+ 
+.divWinFooter {
+	border-color:#abc;
+	background:#f0f4f5 url(/images/icon/footer_bg.gif) repeat-x top left;
+}
+
+.x-form-field-wrap .x-form-browswbtn-trigger{
+	border-left: 1px solid #738494;
+    background-image: url(/images/icon/browsebtn-trigger-slate.gif);
+    cursor:pointer;
+}
+.x-form-field-wrap .x-form-clearbtn-trigger{
+	
+    background-image: url(/images/icon/clearbtn-trigger-slate.png);
+    cursor:pointer;
+}
+.x-form-browswbtn-field{
+	width:0px;
+/*	cursor:pointer;
+	border:none;
+	background-image:none;*/
+}
+.x-form-field-wrap .x-form-color-trigger {
+	background:transparent url(/images/icon/color-trigger.gif) no-repeat 0 0;
+    cursor:pointer; 
+}
+.colorTriggerBtn {
+	background:transparent url(/images/icon/color-trigger.gif) no-repeat 0 0;
+    cursor:pointer; 
+}
+
+
+/* Note */
+.x-note-thumb-wrap .thumb-wrap{
+	padding-bottom: 3px;
+}
+.x-note-thumb-wrap span{
+	font-weight: bold;
+}
+.x-note-thumb-wrap div.x-type{
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.x-note-thumb-wrap div.x-note{
+	color:#000000;
+	word-break:break-all;
+	height : 45px;
+}
+#dataview_note .x-view-over{
+    border:1px solid #dddddd;
+    background: #efefef url(/js/extjs41/resources/images/default/grid/row-over.gif) repeat-x left top;
+   
+}
+#dataview_note .x-view-selected{
+    background: #DFEDFF;
+    border: 1px solid #6593cf;
+    
+}
+
+/* ************************* */
+
+/*
+for attachment panel
+*/
+#dataview_attatchment .x-view-over{
+    border:1px solid #dddddd;
+    background: #efefef url(/js/extjs41/resources/images/default/grid/row-over.gif) repeat-x left top;
+   
+}
+#dataview_attatchment .x-view-selected{
+    background: #DFEDFF;
+    border: 1px solid #6593cf;
+    
+}
+/*end*/
+
+/* ************** */
+
+.PnlLineFieldSet
+{
+	margin-top:10px;
+	border-left:0;
+	border-right:none;
+	border-bottom:none;
+	padding-left:10px;
+	padding-bottom:5px;
+	margin-left:10px;
+}
+
+.PnlLineFieldSet LEGEND
+{
+	margin-left: -15px;
+	margin-top: -1px;
+	line-height:22px;
+	text-transform:capitalize;
+}
+
+
+.button2 {width:auto;overflow:visible;padding-right:3px;padding-left:2px;padding-top:0;height:24px}
+
+.extGrid_checkbox {margin-top:-1px;margin-bottom:-3px;width:18px;height:18px;}
+
+/*just set limit the width on the img,the height will scale itself*/
+.side-image{
+	  max-width:150px;height:auto;cursor:pointer;  
+      border:1px dashed #4E6973;padding: 3px;  
+      zoom:expression( function(elm) {  
+         if (elm.width>150) {  
+             var oldVW = elm.width; elm.width=150;  
+             elm.height = elm.height*(150 /oldVW);  
+         }  
+         elm.style.zoom = '1';
+     }(this));  
+}
+.searchingSelectPosition{
+	float: left;
+}
+.comboboxSelectField {width:125px;}
+
+.comboboxBody4SelectField { width:auto !important;} 
+/*grid cursor is showed pointer for IE*/
+.x-grid-cell-inner{cursor: default !important}
+
+.fieldError{
+	border: 1px solid red;
+}
+.tipErrorMsg{
+	color: red;
+}
+.x-password-prompt {
+	background-color: #CED9E7 !important; 
+	border: none !important;
+}
+.page-total-info-class {
+	top: 5px !important;
+	margin-right: 5px;
+	text-align: right;
+	width: 600px;
+	color: red;
+	font-weight: bold;
+}
+.gridRowColor .x-grid-cell{
+    background:rgb(121,221,250);
+}
+
+.fieldPhoneLabel{
+	margin-top:2px;
+	padding-top:2px;
+	clear:both;
+	float:left;
+	display:block;
+	line-height:1.2em;
+}

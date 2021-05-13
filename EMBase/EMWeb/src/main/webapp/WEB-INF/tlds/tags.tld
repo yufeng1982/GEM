@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+    http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<tlib-version>1.0</tlib-version>
+	<short-name>t</short-name>
+	<uri>tags</uri>
+
+	<tag-file>
+		<name>booleanAttribute</name>
+		<path>/WEB-INF/tags/booleanAttribute.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>disabledAttribute</name>
+		<path>/WEB-INF/tags/disabledAttribute.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>readonlyAttribute</name>
+		<path>/WEB-INF/tags/readonlyAttribute.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>common</name>
+		<path>/WEB-INF/tags/common.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>combine</name>
+		<path>/WEB-INF/tags/combine.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>entity</name>
+		<path>/WEB-INF/tags/entity.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>sourceEntity</name>
+		<path>/WEB-INF/tags/sourceEntity.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>maintenance</name>
+		<path>/WEB-INF/tags/maintenance.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>bnt</name>
+		<path>/WEB-INF/tags/bnt.tag</path>
+	</tag-file>
+
+	<tag-file>
+		<name>acc</name>
+		<path>/WEB-INF/tags/accounting.tag</path>
+	</tag-file>
+</taglib>

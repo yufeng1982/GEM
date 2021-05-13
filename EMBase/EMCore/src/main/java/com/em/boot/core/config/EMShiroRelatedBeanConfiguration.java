@@ -39,6 +39,7 @@ public class EMShiroRelatedBeanConfiguration {
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
         chainDefinition.addPathDefinition("/app/gem/updateadmin", "anon");
+        chainDefinition.addPathDefinition("/app/gem/showMs", "anon");
        // chainDefinition.addPathDefinition("/static/**", "anon");
         chainDefinition.addPathDefinition("/app/login", "authc"); // need to accept POSTs from the login form
         chainDefinition.addPathDefinition("/app/logout", "logout");

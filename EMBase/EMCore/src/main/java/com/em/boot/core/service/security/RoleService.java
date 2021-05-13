@@ -11,6 +11,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import com.em.boot.core.model.security.Role;
 import com.em.boot.core.service.AbsCodeNameEntityService;
 import com.em.boot.core.utils.PropertyFilter;
 import com.em.boot.core.utils.PropertyFilter.MatchType;
+import com.em.boot.core.utils.ResourceUtils;
 import com.em.boot.core.utils.Strings;
 import com.em.boot.core.vo.RoleQueryInfo;
 
@@ -36,8 +38,6 @@ public class RoleService extends AbsCodeNameEntityService<Role, RoleQueryInfo>  
 	
 	@Autowired private RoleRepository roleRepository;
 	//@Autowired private ActivitiManager activitiManager;
-//	@Autowired private CorporationService corporationService;
-	@Autowired private UserService userService;
 
 	@Override
 	protected RoleRepository getRepository() {
@@ -69,24 +69,31 @@ public class RoleService extends AbsCodeNameEntityService<Role, RoleQueryInfo>  
 		return getRepository().findAllByFunctionNodeIdsLike(fnId);
 	}
 	
-//	@Transactional(readOnly = false)
-//	public List<Role> initAdminRoles() {
-//		List<Role> roles = new ArrayList<Role>();
-//		Iterable<Corporation> corporations = corporationService.getAll();
-//		for (Corporation c : corporations) {
-//			String corCode = c.getCode();
-//			String roleCode = ADMIN + "_" + corCode;
-//			Role role = getUniqueByName(roleCode, c);
-//			if(role == null){
-//				role = new Role(roleCode, roleCode, c);
-//				role.setIsAdminRole(true);
-//				role.setDescription("The default admin's role for " + corCode);
-//				save(role);
-//			}
-//			roles.add(role);
-//		}
-//		return roles;		
-//	}
+	@Transactional(readOnly = false)
+	public void initRoles() {
+		
+		Role adminrole = findByCode("adminrole");
+		if(adminrole == null){
+			adminrole = new Role("adminrole", "adminrole");
+			adminrole.setIsAdminRole(true);
+			adminrole.setFunctionNodeIds("ART01,SEC01,SEC02,SEC03");
+			JSONObject jo = new JSONObject();
+			jo.put("ART01_newBtn", "enable");
+			adminrole.setResources(jo);
+			adminrole.setDescription("超级管理员角色");
+			save(adminrole);
+		}
+		
+		Role commonrole = getUniqueByName("commonrole");
+		if(commonrole == null){
+			commonrole = new Role("commonrole", "commonrole");
+			commonrole.setIsAdminRole(false);
+			commonrole.setFunctionNodeIds("ART01,");
+			commonrole.setDescription("通用角色");
+			save(commonrole);
+		}
+		
+	}
 	
 //	public Role getAdminRole(Corporation corporation) {
 //		PropertyFilter adminRolePF = new PropertyFilter("isAdminRole", true, MatchType.EQ);

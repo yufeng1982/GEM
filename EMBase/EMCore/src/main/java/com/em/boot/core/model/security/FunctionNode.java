@@ -10,10 +10,10 @@ import java.util.regex.Pattern;
 import com.em.boot.core.utils.Strings;
 
 /**
- * @author YF
+ * @author FengYu
  *
  */
-public class FunctionNode implements Comparable<FunctionNode>{
+public class FunctionNode {
 
 	private String id;
     private String name;
@@ -24,11 +24,9 @@ public class FunctionNode implements Comparable<FunctionNode>{
     private String imgSrc;
     private String iconCls;
     private List<FunctionNode> list;
-    private List<FunctionNode> list2;
-    
+
 	private Boolean leaf;
 	private FunctionNodeType functionNodeType;
-	private FunctionNode parent;
 	
 	public FunctionNode() {
 		super();
@@ -37,10 +35,6 @@ public class FunctionNode implements Comparable<FunctionNode>{
 	public FunctionNode(FunctionNodeType functionNodeType) {
 		this();
 		this.functionNodeType = functionNodeType;
-	}
-	public FunctionNode(String id) {
-	    this();
-	    this.id = id;
 	}
 	
 	public String getId() {
@@ -73,27 +67,7 @@ public class FunctionNode implements Comparable<FunctionNode>{
 	public void setIndex(String index) {
 		this.index = index;
 	}
-	
-	public void addFunctionNode2(FunctionNode node) {
-		this.getList2().add(node);
-	}
-	
-	public List<FunctionNode> getList2() {
-		if(list2 == null) list2 = new ArrayList<FunctionNode>();
-		return list2;
-	}
 
-	public void setList2(List<FunctionNode> list2) {
-		this.list2 = list2;
-	}
-	
-	public FunctionNode getParent() {
-		return parent;
-	}
-
-	public void setParent(FunctionNode parent) {
-		this.parent = parent;
-	}
 	public String getUrl() {
 		return url;
 	}
@@ -155,10 +129,5 @@ public class FunctionNode implements Comparable<FunctionNode>{
 
 	public void addFunctionNode(FunctionNode node) {
 		this.getList().add(node);
-	}
-
-	@Override
-	public int compareTo(FunctionNode o) {
-		return this.getIndex().compareTo(o.getIndex());
 	}
 }

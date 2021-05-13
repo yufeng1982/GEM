@@ -72,7 +72,7 @@ public class AbsCodeEntity extends AbsEntity {
 	@Override
 	public JSONObject toJSONObject() {
     	JSONObject jo = super.toJSONObject();
-    	jo.put("code", FormatUtils.toString(code));
+    	jo.put("code", FormatUtils.stringValue(code));
     	return jo;
     }
 	

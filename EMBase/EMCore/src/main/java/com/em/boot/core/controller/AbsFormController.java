@@ -1,8 +1,5 @@
 package com.em.boot.core.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONArray;
@@ -16,14 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.em.boot.core.model.AbsEntity;
 import com.em.boot.core.model.AbsSourceEntity;
 import com.em.boot.core.model.IEntity;
 import com.em.boot.core.model.Ownership;
 import com.em.boot.core.utils.PageInfo;
 import com.em.boot.core.utils.Strings;
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.Service.State;
 
 /**
  * @author YF
@@ -183,12 +177,8 @@ public abstract class AbsFormController<T extends IEntity> extends AbsController
 	
 	protected void buildModelMap(ModelMap modelMap, T t) {}
 	
-	abstract protected String getPath();
 	protected void deleteById(String id) {
 		getEntityService().delete(getEntityService().get(id));
 	};
-	abstract protected PageInfo<T> getPageInfo();
-	abstract protected PageInfo<T> buildQueryInfo(IEntity t, PageInfo<T> queryInfo, String pageName);
-	abstract protected Page<T> getPageResult(PageInfo<T> queryInfo);
 	
 }

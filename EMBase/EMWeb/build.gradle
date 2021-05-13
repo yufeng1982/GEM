@@ -1,5 +1,5 @@
 dependencies {
 	compile project(':EMCore')
-	providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.4.1'
-	providedRuntime group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.41'
+	providedCompile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.4.1'
+	providedCompile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.41'
 }

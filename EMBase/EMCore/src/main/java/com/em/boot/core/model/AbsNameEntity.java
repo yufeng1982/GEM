@@ -46,7 +46,7 @@ public class AbsNameEntity extends AbsEntity {
 	@Override
 	public JSONObject toJSONObject() {
     	JSONObject jo = super.toJSONObject();
-    	jo.put("name", FormatUtils.toString(name));
+    	jo.put("name", FormatUtils.stringValue(name));
     	return jo;
     }
 

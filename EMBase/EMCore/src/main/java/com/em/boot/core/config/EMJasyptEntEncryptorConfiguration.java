@@ -38,7 +38,7 @@ public class EMJasyptEntEncryptorConfiguration {
 		return encryptor;
 	}
 	
-	@Bean
+	@Bean("commonHibernateStringEncryptor")
 	public HibernatePBEStringEncryptor getHibernatePBEStringEncryptor(PooledPBEStringEncryptor commonStrongEncryptor) {
 		HibernatePBEStringEncryptor hibernateEncryptor = new HibernatePBEStringEncryptor();
 		hibernateEncryptor.setEncryptor(commonStrongEncryptor);

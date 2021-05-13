@@ -87,9 +87,9 @@ public class Corporation extends AbsCodeNameEntity implements Ownership, Compara
 
 	public JSONObject toJSONObject() {
     	JSONObject jo = super.toJSONObject();
-    	jo.put("corporationId", FormatUtils.toString(getId()));
-    	jo.put("shortName", FormatUtils.toString(shortName));
-    	jo.put("keyWords", FormatUtils.toString(keyWords));
+    	jo.put("corporationId", FormatUtils.stringValue(getId()));
+    	jo.put("shortName", FormatUtils.stringValue(shortName));
+    	jo.put("keyWords", FormatUtils.stringValue(keyWords));
     	return jo;
 	}
 

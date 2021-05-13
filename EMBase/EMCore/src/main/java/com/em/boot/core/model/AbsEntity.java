@@ -16,7 +16,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
-import org.hibernate.annotations.AttributeAccessor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
@@ -24,6 +23,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import org.json.JSONObject;
 
 import com.em.boot.core.service.security.Corporation;
+import com.em.boot.core.utils.FormatUtils;
 import com.em.boot.core.utils.Strings;
 
 
@@ -195,6 +195,13 @@ public abstract class AbsEntity implements IEntity, IDelete, Serializable {
 	@Override
 	public JSONObject toJSONObject() {
 		JSONObject jo = new JSONObject();
+		jo.put("id", FormatUtils.stringValue(id));
+		jo.put("creationDate", FormatUtils.dateTimeValue(creationDate));
+		jo.put("modificationDate", FormatUtils.dateTimeValue(modificationDate));
+		jo.put("description", FormatUtils.stringValue(description));
+		jo.put("corporation", FormatUtils.idString(corporation));
+		jo.put("corporationName", FormatUtils.stringValue(corporation == null ? "" : corporation.getName()));
+		jo.put("displayString", FormatUtils.stringValue(getDisplayString()));
 		return jo;
 	}
 	

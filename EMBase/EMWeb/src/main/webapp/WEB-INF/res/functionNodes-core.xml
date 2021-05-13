@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+    <module id = "ART" key="FNT.ART" iconCls="ss_script">
+    	<node id="ART01" name="article" key="FN.ArticleInfo" imgSrc="" index="10000" url="/app/gem/article/list/show" pattern="" leaf="true"></node>
+   	</module>
+   	
+    <module id="SEC" key="FNT.Administration" iconCls="ss_shield">
+        <node id="SEC01" name="user" key="FN.User" imgSrc="" index="10400" url="/app/gem/user/list/show" pattern="/app/gem/user/" leaf="true"></node>
+        <node id="SEC02" name="role" key="FN.Role" imgSrc="" index="10500" url="/app/gem/role/list/show" pattern="/app/gem/role/" leaf="true"></node>
+        <node id="SEC03" name="PaymentRecords" key="FN.PaymentRecords" imgSrc="" index="10600" url="/app/gem/payment/list/show" pattern="/app/gem/payment/" leaf="true"></node>
+    </module>
+</modules>

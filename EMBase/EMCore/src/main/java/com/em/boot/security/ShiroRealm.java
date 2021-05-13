@@ -40,7 +40,6 @@ public class ShiroRealm extends AuthorizingRealm {
 	          return null;
 	     } else {
 	          SimpleAuthorizationInfo result = userService.getUerPermissions();
-	          result.addRole("admin");
 	          return result;
 	     }
 	}

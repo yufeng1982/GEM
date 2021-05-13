@@ -23,13 +23,14 @@ public interface UserRepository extends AbsEntityRepository<User> {
 	public User findByEmail(String email);
 	
 	public User findByUsernameAndActiveTrue(String username);
+	public User findByNicknameAndActiveTrue(String nickname);
 	public User findByUsernameOrEmail(String username, String email);
 	
 	@Modifying
 	@Query("update User u set u.language = ?1 where u.corporation = ?2")
 	public int setUserLanguage(Language language, String corporation);
 	
-//	public User findByEntryptValidationCode(String entryptPassword);
+	public User findByEntryptValidationCode(String entryptPassword);
 	
 //	@Query("select distinct u from User u left join u.roles role left join role.corporation cor where cor.code = ?1")
 //	public List<User> findUsersByCorporation(String corporation);

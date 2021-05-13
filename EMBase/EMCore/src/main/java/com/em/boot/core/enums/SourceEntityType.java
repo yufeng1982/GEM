@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import com.em.boot.core.exceptions.SourceEntityError;
 import com.em.boot.core.model.AbsCodeNameEntity;
 import com.em.boot.core.model.IEnum;
+import com.em.boot.core.model.ProductSourceEntity;
+import com.em.boot.core.model.security.Role;
 import com.em.boot.core.service.security.Corporation;
 import com.em.boot.core.utils.AppUtils;
 import com.em.boot.core.utils.ResourceUtils;
@@ -50,6 +52,37 @@ public enum SourceEntityType implements IEnum , XType {
 		@Override public boolean isChangable() { return false; }
 		@Override public String getOptionsTemplate(){ return "{code} - {shortName}"; }
 		@Override public String getNameField() { return "shortName"; }
+	},
+	Role {
+		@Override public Class<Role> getClazz() { return Role.class; }
+		@Override public String getKey() { return "RelatedToType.Role"; }
+		@Override public String getSearchUrl() { return "/app/"+AppUtils.APP_NAME+"/role/list/json"; }
+		@Override public String getGridUrl() { return "/security/user/_includes/_rolesGrid"; }
+		@Override
+		public Class<?> getSourceEntityClazz() {
+			return null;
+		}
+		@Override public String getDisplayField() { return "code"; }
+		@Override public JSONArray getStoreFieldArray(){
+			JSONArray array = new JSONArray();
+			array.put(getValueField());
+			array.put(getDisplayField());
+			return array;
+		}
+		
+		@Override public String getOptionsTemplate(){
+			return "{code}";
+		}
+		
+	},
+	User {
+		@Override public Class<?> getClazz() { return getRealClazz("com.photo.bas.core.model.security.User", AbsCodeNameEntity.class); }
+		@Override public Class<ProductSourceEntity> getSourceEntityClazz() { return ProductSourceEntity.class; }
+		@Override public String getGridListUrl() { return "/app/" +AppUtils.APP_NAME+ "/user/list"; }
+		@Override public String getSearchUrl() { return "/app/"+AppUtils.APP_NAME+"/user/list/json4RO"; }
+		@Override public String getGridUrl() { return "security/user/_includes/_usersGrid"; }
+		@Override public String getDisplayField() { return "realName"; }
+		@Override public boolean isChangable() { return false; }
 	};
 	
 	public static EnumSet<SourceEntityType> getSourceEntityTypes() {
