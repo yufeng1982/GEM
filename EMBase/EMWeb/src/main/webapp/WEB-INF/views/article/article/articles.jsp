@@ -11,7 +11,14 @@
 	             defaults: {
 		             margin : '3 15 3 15'
 		         },
-				items: [{
+				items: [,{
+					fieldLabel: "${f:getText('Com.ArticleCategory')}",
+					xtype : "erpsearchingselect",
+					config : ${f:mss('ArticleCategory')},
+					labelWidth: 70,
+			        width : 200,
+			        name: 'sf_EQ_articleCategory'
+				},{
 					fieldLabel: "${f:getText('Com.Title')}",
 					xtype : 'textfield',
 					labelWidth: 70,

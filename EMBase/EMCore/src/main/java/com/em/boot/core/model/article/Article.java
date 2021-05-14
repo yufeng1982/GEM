@@ -3,9 +3,13 @@
  */
 package com.em.boot.core.model.article;
 
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
@@ -28,6 +32,10 @@ public class Article extends AbsEntity {
 
 	private String title;
 	
+	@ManyToOne
+	@JoinColumn(name = "article_category_id", foreignKey = @ForeignKey(name = "none",value = ConstraintMode.NO_CONSTRAINT))
+	private ArticleCategory articleCategory;
+	
 	@Enumerated(EnumType.STRING)
 	private ArticleStatus status = ArticleStatus.Draft;
 	
@@ -40,6 +48,14 @@ public class Article extends AbsEntity {
 	}
 
 
+	public ArticleCategory getArticleCategory() {
+		return articleCategory;
+	}
+
+	public void setArticleCategory(ArticleCategory articleCategory) {
+		this.articleCategory = articleCategory;
+	}
+
 	public ArticleStatus getStatus() {
 		return status;
 	}
@@ -51,6 +67,7 @@ public class Article extends AbsEntity {
 	public JSONObject toJSONObject() {
     	JSONObject jo = super.toJSONObject();
     	jo.put("title", FormatUtils.stringValue(title));
+    	jo.put("articleCategory", FormatUtils.displayString(articleCategory));
     	jo.put("status", FormatUtils.stringValue(status));
     	return jo;
 	}

@@ -14,11 +14,13 @@ Ext.define('ERP.article.article.ArticleAction' ,{
 	
 	addLine :  function() {
 		GUtils.addLine(this.getChaptersGrid());
+		GUtils.resetSequence(this.getChaptersGrid(),'chapterNo');
 	},
 	removeLine : function() {
 		var record = GUtils.getSelected();
 		if(record) {
-			GUtils.removeLine(this.getChaptersGrid());
+			GUtils.removeLine(this.getChaptersGrid(),'chaptersDeleteLines',record);
+			GUtils.resetSequence(this.getChaptersGrid(),'chapterNo');
 		}
 	},
 	getChaptersGrid : function() {
@@ -30,26 +32,46 @@ Ext.define('ERP.article.article.ArticleAction' ,{
 	
 	formValidationBeforeSave : function() {
 		var msgarray = [];
-		if(!Strings.isEmpty( $('name').value) && $('entityId').value == 'NEW' && !CUtils.isTrueVal(PAction.userNameUnique)){
-			msgarray.push({fieldname:"name", message: PRes["NameUnique"], arg:null});
-		}
-		var records = this.getRoleGrid().getStore().data.getRange();
-		if(records.length == 0){
-			msgarray.push({fieldname:"ROLE_GRID_PANEL_ID", message: PRes["RoleListValidation"], arg:null});
-		}
-		if($('entityId').value == 'NEW'){
-			var confirmPassword = $('plainPassword').value;
-			var password = $('password').value;
-			if(!Strings.isEmpty(confirmPassword) && !Strings.isEmpty(password) && password != confirmPassword){
-				msgarray.push({fieldname:"plainPassword", message: PRes["validationPassword"], arg:null});
-			}
-		}
-		if(!VUtils.validateEmail($('email').value)) {
-			msgarray.push({fieldname:"email", message: PRes["ValidationEmail"], arg:null});
-		}
+		
 		return msgarray;
 	},
 	formProcessingBeforeSave : function() {
-		$("roleListJSON").value = GUtils.allRecordsToJson(this.getRoleGrid());
+		$("chapters").value = GUtils.allRecordsToJson(this.getChaptersGrid());
+	},
+	showContentWin : function (editor, e) {
+		var me = this;
+		if (e.field == 'chapterContent') {
+			var win = Ext.create('Ext.window.Window', {
+			    id : 'chapterWin',
+				title: '章节编辑器',
+			    height: 550,
+			    width: 900,
+			    layout: 'fit',
+			    modal: true,
+			    items: {  
+			    	xtype: 'htmleditor',
+			    	id: 'chapterEditorId',
+			    	value : ''
+			    },
+			    buttons: [{ 
+			    		  text: '确认',
+			    		  handler : function(){
+			    			  e.record.set('chapterContent',Ext.getCmp('chapterEditorId').getValue())
+			    			  Ext.getCmp('chapterWin').close();
+			    		  }
+			    	  },{ 
+			    		  text: '取消', 
+			    		  handler : function(){
+			    			  Ext.getCmp('chapterWin').close();
+			    		  }
+			    	  }
+			    ]
+			});
+			win.on('show',function(t, e){
+				var record = GUtils.getSelected(me.getChaptersGrid());
+				Ext.getCmp('chapterEditorId').setValue(record.get('chapterContent'));
+			})
+			win.show();
+		}
 	}
 });

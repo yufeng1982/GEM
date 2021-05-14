@@ -2,21 +2,24 @@ function page_OnLoad() {
 	var actionBarItems = [];
 	PRes["Publish"] = "${f:getText('Com.Publish')}";
 	PRes["Chapter"] = "${f:getText('Com.Chapter')}";
-	var published = new Ext.Action( {
-		text : PRes["Publish"],
-		iconCls: 'ss_sprite ss_wrench',
-		handler: function() {
-			PAction.resetPassword();
-		}
-	});
-	if($('entityId').value != DEFAULT_NEW_ID) actionBarItems[52] = new Ext.Button(published);
+//	var published = new Ext.Action( {
+//		id : 'publishBtn',
+//		text : PRes["Publish"],
+//		iconCls: 'ss_sprite ss_wrench',
+//		disabled: CUtils.isTrueVal(${entity.status ne 'Draft'}),
+//		handler: function() {
+//			PAction.publishActicle();
+//		}
+//	});
+//	if($('entityId').value != DEFAULT_NEW_ID) actionBarItems[52] = new Ext.Button(published);
 	
 	var actionBar = new ERP.FormActionBar(actionBarItems);
 //	G_CONFIG.isPaging = false;
-	PAction = new ERP.article.article.ArticleAction({
-	});
-	var chaptersGrid = GUtils.initErpGrid(GRID_ID, {sf_EQ_article: $('entityId').value});
-	
+	PAction = new ERP.article.article.ArticleAction({});
+	var chaptersGrid = GUtils.initErpGrid(GRID_ID, {articleId: $('entityId').value});
+	chaptersGrid.on('beforeedit', function(editor, e){
+		PAction.showContentWin(editor, e);
+	}); 
 	
 	PApp =  new ERP.FormApplication({
 		chaptersGrid : chaptersGrid,
@@ -31,9 +34,9 @@ function page_OnLoad() {
 				xtype : "portlet",
 				id : "CHAPTER_GRID_PANEL_ID",
 				collapseFirst: false,
-				height : 430,
+				height : 500,
 				layout : 'fit',
-				title :ss_icon('ss_folder_user') + PRes["Chapter"],
+				title : ss_icon('ss_application_form') + PRes["Chapter"],
 				dockedItems: [{
 	                xtype: 'toolbar',
 	                items: [{

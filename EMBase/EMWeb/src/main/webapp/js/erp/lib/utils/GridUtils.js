@@ -161,7 +161,7 @@ Ext.define('ERP.GridUtils' , {
 		if(data.length > 0){
 			return CUtils.jsonEncode(me.formatDateColumnValue(data, me.getDateColumnArray(grid)));
 		} else {
-			return "";
+			return CUtils.jsonEncode(data);
 		}
 	},
 	allRecordsToJson : function(grid/*Ext.gird*/, withoutFilter) {

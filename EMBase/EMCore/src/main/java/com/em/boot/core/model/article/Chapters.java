@@ -75,9 +75,9 @@ public class Chapters extends AbsEntity {
 
 	public JSONObject toJSONObject() {
     	JSONObject jo = super.toJSONObject();
-    	jo.put("title", FormatUtils.stringValue(title));
+    	jo.put("chapterTitle", FormatUtils.stringValue(title));
     	jo.put("chapterNo", FormatUtils.stringValue(chapterNo));
-    	jo.put("content", FormatUtils.stringValue(content));
+    	jo.put("chapterContent", FormatUtils.stringValue(content));
     	return jo;
 	}
 	

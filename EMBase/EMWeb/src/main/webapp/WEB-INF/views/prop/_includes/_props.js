@@ -85,9 +85,9 @@ function buildActionBarItems(isPopupEditor, ableToClosePage, isAbleToRemoveLine,
 	}
 	if(ableToClosePage) {
 		var actionBarItems = [];
-		if(isAbleToRemoveLine){
+//		if(isAbleToRemoveLine){
 			actionBar.push(new Ext.Button(actions.addLine));
-		}
+//		}
 		if(!CUtils.isTrueVal(isPopupEditor)){
 			if(isAbleToRemoveLine) {
 				actionBar.push(new Ext.Button(actions.removeLine));
@@ -98,9 +98,9 @@ function buildActionBarItems(isPopupEditor, ableToClosePage, isAbleToRemoveLine,
 		}
 		actionBar.push(new Ext.Button(actions.cancel));
 	} else {
-		if(isAbleToRemoveLine) {
+//		if(isAbleToRemoveLine) {
 			actionBar.push(new Ext.Button(actions.addLine));
-		}
+//		}
 		if(!CUtils.isTrueVal(isPopupEditor)){
 			if(isAbleToRemoveLine) {
 				actionBar.push(new Ext.Button(actions.removeLine));

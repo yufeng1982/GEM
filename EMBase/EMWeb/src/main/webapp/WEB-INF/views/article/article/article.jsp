@@ -9,8 +9,9 @@
 	<style type="text/css" media="all">
 		.fieldRow LABEL {width:140px}
 		.fieldRowTextField {width:160px}
-		#divHeader1{float:left;width:48%}
-		#divHeader2{float:left;width:48%}
+		#divHeader1{float:left;width:33%}
+		#divHeader2{float:left;width:33%}
+		#divHeader2{float:left;width:33%}
 	</style>
 	<script type="text/javascript">
 		PRes["roleList"] = "${f:getText('Com.User.RolesList')}";
@@ -39,12 +40,16 @@
 	<jsp:directive.include file="/WEB-INF/views/utils/_hiddenUtil.jsp" />
 	
 	<input type="hidden" name="chapters" id="chapters" value=""/>
+	<input type="hidden" name="chaptersDeleteLines" id="chaptersDeleteLines" value=""/>
 	<div id="divGeneral">
 	    <div id="divHeader1">
-			<t:common type="text" tabindex='10' path="title" id="title" key="Com.Title" readonly="${readonly}" notNull="true" maxlength="50"/>
+			<t:common type="text" tabindex='10' path="title" id="title" key="Com.Title" notNull="true" maxlength="50"/>
         </div>
 		<div id="divHeader2">
-			<t:common type="select" tabindex='20' path="status" id="status" key="Com.Status" items="${statusList}" itemValue="name" itemLabel="text" notNull="true" disabled="${disabled}"/>
+			<t:maintenance type="ArticleCategory" tabindex='1052' path="articleCategory" id="articleCategory"  notNull="true" key="Com.ArticleCategory" bindModel="${bindModel}" />
+		</div>
+		<div id="divHeader2">
+			<t:common type="select" tabindex='20' path="status" id="status" key="Com.Status" items="${statusList}" itemValue="name" itemLabel="text" notNull="true" />
 		</div>
 	</div>
 </form:form>

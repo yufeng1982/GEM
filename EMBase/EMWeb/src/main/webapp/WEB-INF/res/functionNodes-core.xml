@@ -2,6 +2,7 @@
 <modules>
     <module id = "ART" key="FNT.ART" iconCls="ss_script">
     	<node id="ART01" name="article" key="FN.ArticleInfo" imgSrc="" index="10000" url="/app/gem/article/list/show" pattern="" leaf="true"></node>
+    	<node id="ART02" name="articleCategory" key="FN.ArticleCategory" imgSrc="" index="11000" url="/app/gem/articleCategory/list" pattern="" leaf="true"></node>
    	</module>
    	
     <module id="SEC" key="FNT.Administration" iconCls="ss_shield">

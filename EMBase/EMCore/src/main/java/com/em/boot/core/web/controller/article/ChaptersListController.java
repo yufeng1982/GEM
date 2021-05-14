@@ -1,11 +1,13 @@
 package com.em.boot.core.web.controller.article;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.em.boot.core.controller.AbsQueryPagedListController;
@@ -35,8 +37,8 @@ public class ChaptersListController extends AbsQueryPagedListController<Chapters
 	}
 	
 	@RequestMapping("json")
-	public ModelAndView json(@ModelAttribute("pageQueryInfo") ChaptersQueryInfo queryInfo) {
-		Page<Chapters> pagedArticles = getEntityService().getChaptersBySearch(queryInfo);
+	public ModelAndView json(@ModelAttribute("pageQueryInfo") ChaptersQueryInfo queryInfo,@RequestParam(required = false) String articleId) {
+		List<Chapters> pagedArticles = getEntityService().findByArticleId(articleId);
 		return toJSONView(pagedArticles);
 	}
 

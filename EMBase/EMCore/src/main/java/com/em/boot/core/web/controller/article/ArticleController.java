@@ -1,5 +1,8 @@
 package com.em.boot.core.web.controller.article;
 
+import java.util.List;
+
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.em.boot.core.controller.AbsFormController;
@@ -16,7 +20,6 @@ import com.em.boot.core.model.ArticleStatus;
 import com.em.boot.core.model.article.Article;
 import com.em.boot.core.model.security.User;
 import com.em.boot.core.service.article.ArticleService;
-import com.em.boot.core.utils.JsonUtils;
 import com.em.boot.core.utils.Strings;
 
 
@@ -42,23 +45,29 @@ public class ArticleController extends AbsFormController<Article> {
 	}
 	
 	@RequestMapping(value = "{id}/apply", method = {RequestMethod.PUT, RequestMethod.POST})
-	public ModelAndView apply(ModelMap modelMap, @ModelAttribute("entity") Article article, BindingResult result) {
-		saveArticle(article, result);
-		return redirectTo("user/form/" + (Strings.isEmpty(article.getId()) ? NEW_ENTITY_ID : article.getId())  + "/show", modelMap);
+	public ModelAndView apply(ModelMap modelMap, @ModelAttribute("entity") Article article, 
+			@RequestParam(name = "chapters") JSONArray chapters, 
+			@RequestParam List<String> chaptersDeleteLines,
+			BindingResult result) {
+		saveArticle(article, chapters, chaptersDeleteLines, result);
+		return redirectTo("article/form/" + (Strings.isEmpty(article.getId()) ? NEW_ENTITY_ID : article.getId())  + "/show", modelMap);
 	}
 	@RequestMapping(value = "{id}/ok", method = {RequestMethod.PUT, RequestMethod.POST})
-	public ModelAndView ok(ModelMap modelMap, @ModelAttribute("entity") Article article, BindingResult result) {
-		if(saveArticle(article, result)) {
+	public ModelAndView ok(ModelMap modelMap, @ModelAttribute("entity") Article article,
+			@RequestParam(name = "chapters") JSONArray chapters, 
+			@RequestParam List<String> chaptersDeleteLines,
+			BindingResult result) {
+		if(saveArticle(article, chapters, chaptersDeleteLines, result)) {
 			return closePage(modelMap);
 		}
-		return redirectTo("user/form/" + (Strings.isEmpty(article.getId()) ? NEW_ENTITY_ID : article.getId())  + "/show", modelMap);
+		return redirectTo("article/form/" + (Strings.isEmpty(article.getId()) ? NEW_ENTITY_ID : article.getId())  + "/show", modelMap);
 	}
 	
 	
-	private boolean saveArticle(Article article, BindingResult result) {
+	private boolean saveArticle(Article article, JSONArray chapters, List<String> chaptersDeleteLines, BindingResult result) {
 		boolean isSucceed = !hasErrorMessages();
 		if (isSucceed) {
-			getEntityService().save(article);
+			getEntityService().save(article, chapters, chaptersDeleteLines);
 		}
 		return isSucceed;
 	}

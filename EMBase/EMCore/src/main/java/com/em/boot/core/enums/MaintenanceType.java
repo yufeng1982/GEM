@@ -26,6 +26,14 @@ public enum MaintenanceType implements IEnum , XType {
 			JSONArray ja = getDefaultColumModelWithDescription();
 			return ja;
 		}
+	},
+	ArticleCategory {
+		@Override public Class<?> getClazz() { return getRealClazz("com.em.boot.core.model.article.ArticleCategory"); }
+		@Override public String getSearchUrl() { return "/app/" + AppUtils.APP_NAME + "/articleCategory/json"; }
+		@Override public JSONArray getColumModel() {
+			JSONArray ja = getDefaultColumModelWithDescription();
+			return ja;
+		}
 	};
 
 	public static EnumSet<MaintenanceType> getMaintenanceTypes() {

@@ -10,6 +10,6 @@ import com.em.boot.core.model.article.Article;
  * @author YF
  *
  */
-public interface ArticlerRepository extends AbsEntityRepository<Article> {
+public interface ArticleRepository extends AbsEntityRepository<Article> {
 	
 }

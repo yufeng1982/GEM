@@ -3,6 +3,8 @@
  */
 package com.em.boot.core.service.article;
 
+import java.util.List;
+
 import javax.persistence.criteria.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,10 @@ public class ChaptersService extends AbsEntityService<Chapters, ChaptersQueryInf
 		return getRepository().save(chapters);
 	}
 
+	public List<Chapters> findByArticleId(String articleId) {
+		return getRepository().findByArticleIdAndActiveTrue(articleId);
+	}
+	
 	public Page<Chapters> getChaptersBySearch(final ChaptersQueryInfo queryInfo){
 		return getRepository().findAll((Specification<Chapters>) (root, query, cb) -> {
 			Predicate predicate = cb.conjunction();

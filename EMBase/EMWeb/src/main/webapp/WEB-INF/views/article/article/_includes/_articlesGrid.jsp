@@ -9,8 +9,8 @@ G_CONFIG = {
 		isPaging : true, // default value is true
 		isInfinite : false, // deault value is false
 		columns : [{id : 'id', hidden: true, header : "id"},
+				   {id : 'articleCategory', header : "${f:getText('Com.ArticleCategory')}", width : 100},
 		           {id : 'title', header : "${f:getText('Com.Title')}", width : 100},
-		           {id : 'chapter', header : "${f:getText('Com.Chapter')}", width : 100},
 		           {id : 'status',  header : "${f:getText('Com.Status')}", width : 100},
 		           {id : 'creationDate', header : "${f:getText('Com.CreationDate')}", width : 250},
 		           {id : 'modificationDate', header : "${f:getText('Com.ModificationDate')}", width : 250}
