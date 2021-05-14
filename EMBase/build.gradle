@@ -26,6 +26,7 @@ subprojects {
     	implementation 'joda-time:joda-time:2.2'
     	implementation 'org.jscience:jscience:4.3.1'
     	implementation 'commons-lang:commons-lang:2.4'
+    	compile fileTree(dir:'libs', include: [ '*.jar'])
 	    
     }
 
