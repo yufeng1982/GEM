@@ -8,11 +8,11 @@ subprojects {
     }
 
     dependencies {
-    	implementation 'org.springframework.boot:spring-boot-starter-web:2.4.1'
-    	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.4.1'
-    	implementation 'org.hibernate:hibernate-envers:5.4.25.Final'
-    	implementation 'org.apache.shiro:shiro-spring-boot-web-starter:1.7.0'
-    	implementation 'org.postgresql:postgresql:42.2.18'
+    	implementation 'org.springframework.boot:spring-boot-starter-web:2.4.5'
+    	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.4.5'
+    	implementation 'org.hibernate:hibernate-envers:5.4.31.Final'
+    	implementation 'org.apache.shiro:shiro-spring-boot-web-starter:1.7.1'
+    	implementation 'org.postgresql:postgresql:42.2.20'
     	implementation 'com.metaparadigm:json-rpc:1.0'
     	implementation 'com.google.guava:guava:30.1-jre'
     	implementation 'org.jasypt:jasypt:1.9.3'
